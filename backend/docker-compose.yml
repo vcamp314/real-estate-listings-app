@@ -1,0 +1,20 @@
+services:
+  db:
+    image: 'mysql:latest'
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3366:3306'
+  rails:
+    build: ./ 
+    ports:
+      - '3033:3000'
+    volumes:
+      - ./real-estate-listings-api:/real-estate-listings-api # add our local code to dockerfile
+    depends_on:
+      - db  # add all dependant containers
+
+volumes:
+  mysql: # named volume
