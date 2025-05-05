@@ -15,7 +15,7 @@ i18n
       }
     },
     lng: 'ja', // default language set to Japanese
-    fallbackLng: 'en',
+    fallbackLng: 'ja',
     interpolation: {
       escapeValue: false
     }
