@@ -1,7 +1,7 @@
 class RentalListing < ApplicationRecord
-    validates :id, :address, :rent, :floor_area, :building_type, presence: true
+    validates :id, :name, presence: true
     validates :floor_area, numericality: { greater_than: 0 }
-    validates :id, uniqueness: true
+    validates :rent, numericality: { greater_than: 0 }
 
     enum :building_type, {
         apartment: 1,

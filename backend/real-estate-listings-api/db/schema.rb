@@ -10,5 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_05_080026) do
+  create_table "rental_listings", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "address"
+    t.string "apartment_number"
+    t.integer "rent"
+    t.decimal "floor_area", precision: 10
+    t.integer "building_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 end
