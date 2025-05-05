@@ -32,33 +32,7 @@ class Api::Web::V1::RentalListingsController < ApplicationController
         batch.each_with_index do |row, index|
           row_number = (batch_index * BATCH_SIZE) + index + 2 # Adding 2 because index is 0-based and we want to account for header row
           
-          begin
-            building_type = BUILDING_TYPE_MAPPING[row['建物の種類']&.strip]
-
-            record = {
-              id: row['ユニークID'].to_i,
-              name: row['物件名'],
-              address: row['住所'],
-              apartment_number: row['部屋番号'],
-              rent: row['賃料'].to_i,
-              floor_area: row['広さ'].to_f,
-              building_type: building_type,
-              created_at: Time.current,
-              updated_at: Time.current
-            }
-
-            # Validate the record
-            rental_listing = RentalListing.new(record)
-            if rental_listing.valid?
-              valid_records << record
-            else
-              rental_listing.errors.each do |error|
-                errors_hash["#{row_number}:#{error.attribute}"] = { row: row_number, column: error.attribute.to_s }
-              end
-            end
-          rescue ArgumentError => e
-            errors_hash["#{row_number}:format"] = { row: row_number, column: 'format' }
-          end
+          process_csv_row(row, row_number, valid_records, errors_hash)
         end
 
         # Process valid records in the current batch
@@ -99,6 +73,38 @@ class Api::Web::V1::RentalListingsController < ApplicationController
       render json: { error: 'Invalid CSV format' }, status: :unprocessable_entity
     rescue StandardError => e
       render json: { error: e.message }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def process_csv_row(row, row_number, valid_records, errors_hash)
+    begin
+      building_type = BUILDING_TYPE_MAPPING[row['建物の種類']&.strip]
+
+      record = {
+        id: row['ユニークID'].to_i,
+        name: row['物件名'],
+        address: row['住所'],
+        apartment_number: row['部屋番号'],
+        rent: row['賃料'].to_i,
+        floor_area: row['広さ'].to_f,
+        building_type: building_type,
+        created_at: Time.current,
+        updated_at: Time.current
+      }
+
+      # Validate the record
+      rental_listing = RentalListing.new(record)
+      if rental_listing.valid?
+        valid_records << record
+      else
+        rental_listing.errors.each do |error|
+          errors_hash["#{row_number}:#{error.attribute}"] = { row: row_number, column: error.attribute.to_s }
+        end
+      end
+    rescue ArgumentError => e
+      errors_hash["#{row_number}:format"] = { row: row_number, column: 'format' }
     end
   end
 end
