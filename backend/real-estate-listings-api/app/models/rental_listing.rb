@@ -11,4 +11,7 @@ class RentalListing < ApplicationRecord
     }
 
     validates :building_type, inclusion: { in: building_types.keys }
+    
+    # apartments must have an apartment number
+    validates :apartment_number, presence: true, if: :apartment?
 end
