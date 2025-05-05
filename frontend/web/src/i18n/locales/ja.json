@@ -16,7 +16,16 @@
             "validationErrors": "検証エラー",
             "table": {
                 "row": "行",
-                "column": "列"
+                "column": "列",
+                "columns": {
+                    "building_type": "建物の種類",
+                    "name": "物件名",
+                    "address": "住所",
+                    "apartment_number": "部屋番号",
+                    "rent": "賃料",
+                    "floor_area": "広さ",
+                    "id": "ユニークID"
+                }
             }
         },
         "status": {

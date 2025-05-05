@@ -11,12 +11,21 @@
         "results": {
             "title": "Results",
             "message": "Message",
-            "recordsProcessed": "Records processed",
+            "recordsProcessed": "Records successfully processed",
             "errorCount": "Error count",
             "validationErrors": "Validation Errors",
             "table": {
                 "row": "Row",
-                "column": "Column"
+                "column": "Column",
+                "columns": {
+                    "building_type": "Building Type",
+                    "name": "Property Name",
+                    "address": "Address",
+                    "apartment_number": "Apartment Number",
+                    "rent": "Rent",
+                    "floor_area": "Floor Area",
+                    "id": "Unique ID"
+                }
             }
         },
         "status": {

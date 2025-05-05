@@ -31,7 +31,9 @@ export const ErrorTable = ({ errors }: ErrorTableProps) => {
                         {errors.map((error, index) => (
                             <tr key={index} className="hover:bg-gray-50">
                                 <td className="px-3 py-2 whitespace-nowrap text-sm text-gray-500">{error.row}</td>
-                                <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">{error.column}</td>
+                                <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    {t(`csvUploader.results.table.columns.${error.column}`)}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
