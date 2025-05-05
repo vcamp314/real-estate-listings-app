@@ -61,7 +61,6 @@ export const Results = ({ response, status }: ResultsProps) => {
 
                     <div className="mt-2 text-sm">
                         <div className="mb-4">
-                            <p><strong>{t('csvUploader.results.message')}:</strong> {response.message}</p>
                             <p><strong>{t('csvUploader.results.recordsProcessed')}:</strong> {response.processed_count}</p>
                             <p><strong>{t('csvUploader.results.errorCount')}:</strong> {response.error_count}</p>
                         </div>
