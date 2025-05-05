@@ -1,5 +1,6 @@
 class RentalListing < ApplicationRecord
     validates :id, :name, presence: true
+    validates :id, numericality: { only_integer: true, greater_than: 0 }
     validates :floor_area, numericality: { greater_than: 0 }
     validates :rent, numericality: { greater_than: 0 }
 

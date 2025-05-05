@@ -232,5 +232,33 @@ RSpec.describe "/api/web/v1/rental_listings", type: :request do
         )
       end
     end
+
+    context "when CSV contains invalid IDs" do
+      let(:file) { fixture_file_upload("invalid_id_rental_listings.csv", "text/csv") }
+
+      it "returns errors for invalid IDs" do
+        post "/api/web/v1/rental_listings", params: { file: file }
+        expect(response).to have_http_status(:partial_content)
+        json_response = JSON.parse(response.body)
+        
+        expect(json_response["errors"]).to include(
+          {
+            "row" => 3,
+            "column" => "id",
+          },
+          {
+            "row" => 4,
+            "column" => "id",
+          },
+          {
+            "row" => 5,
+            "column" => "id",
+          }
+        )
+
+        # Verify that valid rows are still processed
+        expect(RentalListing.find_by(id: 1)).to be_present
+      end
+    end
   end
 end
