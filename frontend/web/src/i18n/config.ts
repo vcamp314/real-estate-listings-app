@@ -14,8 +14,8 @@ i18n
         translation: jaTranslations
       }
     },
-    lng: 'en', // default language
-    fallbackLng: 'ja',
+    lng: 'ja', // default language set to Japanese
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false
     }
