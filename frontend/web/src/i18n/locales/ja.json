@@ -1,0 +1,32 @@
+{
+    "csvUploader": {
+        "title": "物件情報CSVアップロードツール",
+        "description": "CSVファイルをアップロードして処理と検証を行います",
+        "selectFile": "CSVファイルを選択",
+        "selectFilePlaceholder": "CSVファイルを選択",
+        "uploadButton": {
+            "default": "アップロードして処理",
+            "processing": "処理中"
+        },
+        "results": {
+            "title": "結果",
+            "message": "メッセージ",
+            "recordsProcessed": "処理されたレコード数",
+            "errorCount": "エラー数",
+            "validationErrors": "検証エラー",
+            "table": {
+                "row": "行",
+                "column": "列"
+            }
+        },
+        "status": {
+            "success": "すべてのレコードが正常に処理されました",
+            "warning": "一部のレコードに検証エラーがあります",
+            "error": "すべてのレコードに検証エラーがあります"
+        },
+        "errors": {
+            "title": "エラー",
+            "uploadFailed": "ファイルのアップロードに失敗しました。もう一度お試しください。"
+        }
+    }
+}

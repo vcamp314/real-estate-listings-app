@@ -1,0 +1,32 @@
+{
+    "csvUploader": {
+        "title": "Rental Listings CSV Upload Tool",
+        "description": "Upload a CSV file for validation and processing",
+        "selectFile": "Select CSV File",
+        "selectFilePlaceholder": "Choose a CSV file",
+        "uploadButton": {
+            "default": "Upload and Process",
+            "processing": "Processing"
+        },
+        "results": {
+            "title": "Results",
+            "message": "Message",
+            "recordsProcessed": "Records processed",
+            "errorCount": "Error count",
+            "validationErrors": "Validation Errors",
+            "table": {
+                "row": "Row",
+                "column": "Column"
+            }
+        },
+        "status": {
+            "success": "All records processed successfully",
+            "warning": "Some records had validation errors",
+            "error": "All records had validation errors"
+        },
+        "errors": {
+            "title": "Error",
+            "uploadFailed": "Failed to upload file. Please try again."
+        }
+    }
+}
